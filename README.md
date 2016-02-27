@@ -3,6 +3,8 @@ The SendGrid Home Assistant notification component allows you to send notificati
 [Home Assistant](https://home-assistant.io) is an open source home automation platform.
 [SendGrid](https://sendgrid.com/) is a proven cloud-based email platform.
 
+This was accepted upstream and will be included in the 0.14 release of Home Assistant: https://github.com/balloob/home-assistant/pull/1419
+
 # Installation
 Place sendgrid.py in `<config directory>/custom_components/`.
 For more information, check out [Home Assistant's custom components](https://home-assistant.io/developers/creating_components/#loading-components).
