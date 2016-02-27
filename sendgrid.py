@@ -1,5 +1,4 @@
 import logging
-from sendgrid import Mail, SendGridClient
 
 from homeassistant.components.notify import (
     ATTR_TITLE, DOMAIN, BaseNotificationService)
@@ -27,10 +26,13 @@ class SendgridNotificationService(BaseNotificationService):
         self.sender = sender
         self.recipient = recipient
 
+        from sendgrid import SendGridClient
+        self._sg = SendGridClient(self.api_key)
+
     def send_message(self, message='', **kwargs):
         subject = kwargs.get(ATTR_TITLE)
 
-        sg = SendGridClient(self.api_key)
+        from sendgrid import Mail
         mail = Mail(from_email=self.sender, to=self.recipient,
                     html=message, text=message, subject=subject)
-        sg.send(mail)
+        self._sg.send(mail)
